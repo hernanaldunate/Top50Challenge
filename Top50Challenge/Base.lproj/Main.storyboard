@@ -24,12 +24,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="204.5"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FEZ-xB-ZMz" userLabel="Content Stack View">
-                                            <rect key="frame" x="12" y="12" width="150" height="0.0"/>
+                                            <rect key="frame" x="12" y="12" width="150" height="180"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JBd-bD-Sia" userLabel="Top Stack View">
                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="20"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4H6-6H-k71" userLabel="Status">
+                                                        <view contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="4H6-6H-k71" userLabel="Status">
                                                             <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
                                                             <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
@@ -37,13 +37,13 @@
                                                                 <constraint firstAttribute="height" constant="20" id="h1t-2M-AV4"/>
                                                             </constraints>
                                                         </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" ambiguous="YES" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Nc-ww-afp">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Nc-ww-afp">
                                                             <rect key="frame" x="30" y="0.0" width="51.5" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" ambiguous="YES" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHj-NW-Y7W">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHj-NW-Y7W">
                                                             <rect key="frame" x="91.5" y="0.0" width="58.5" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
@@ -71,10 +71,10 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hgt-9z-c4w" userLabel="Bottom Stack View">
-                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="0.0"/>
+                                                    <rect key="frame" x="0.0" y="140" width="150" height="40"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KuX-nb-A0x" userLabel="Delete">
-                                                            <rect key="frame" x="0.0" y="-32" width="140" height="32"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="140" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="q8b-QW-RQ9"/>
                                                                 <constraint firstAttribute="width" constant="140" id="rXW-xE-X3H"/>
@@ -89,7 +89,7 @@
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFc-57-ptP">
-                                                            <rect key="frame" x="150" y="-32" width="0.0" height="32"/>
+                                                            <rect key="frame" x="150" y="0.0" width="0.0" height="40"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                             <nil key="highlightedColor"/>
@@ -124,6 +124,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Reddit Entries" id="1La-f9-grK"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="SFU-JB-xGj">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                 </tableViewController>
@@ -149,7 +150,7 @@
                                 <rect key="frame" x="12" y="100" width="390" height="750"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfE-Iz-LvV" userLabel="Container View">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="576.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="264.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLH-Tp-RDw" userLabel="Author">
                                                 <rect key="frame" x="0.0" y="0.0" width="51.5" height="20.5"/>
@@ -157,12 +158,15 @@
                                                 <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" image="googleLogo" translatesAutoresizingMaskIntoConstraints="NO" id="wbp-Td-V4c" userLabel="Picture">
-                                                <rect key="frame" x="0.0" y="30.5" width="390" height="512"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="751" image="delete_button1" translatesAutoresizingMaskIntoConstraints="NO" id="wbp-Td-V4c" userLabel="Picture">
+                                                <rect key="frame" x="95" y="30.5" width="200" height="200"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="200" id="dBj-52-Nuf"/>
+                                                    <constraint firstAttribute="width" priority="750" constant="200" id="m3A-6Y-0aS"/>
+                                                </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wa6-uD-50U" userLabel="Title">
-                                                <rect key="frame" x="0.0" y="552.5" width="390" height="24"/>
+                                                <rect key="frame" x="0.0" y="240.5" width="390" height="24"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -210,7 +214,9 @@
                     <connections>
                         <outlet property="authorLabel" destination="GLH-Tp-RDw" id="1RG-Mg-qJD"/>
                         <outlet property="loadingLabel" destination="gvy-03-Vx2" id="PhO-Df-dMY"/>
+                        <outlet property="pictureHeightConstraint" destination="dBj-52-Nuf" id="geB-jG-W5k"/>
                         <outlet property="pictureImageView" destination="wbp-Td-V4c" id="b3l-eK-vzw"/>
+                        <outlet property="pictureWidthConstraint" destination="m3A-6Y-0aS" id="9wo-aT-UBS"/>
                         <outlet property="scrollView" destination="bcY-ZO-9bU" id="rLw-yd-8ne"/>
                         <outlet property="titleLabel" destination="Wa6-uD-50U" id="uHB-mP-xUM"/>
                     </connections>
@@ -259,6 +265,5 @@
     </scenes>
     <resources>
         <image name="delete_button1" width="32" height="32"/>
-        <image name="googleLogo" width="501" height="512"/>
     </resources>
 </document>
