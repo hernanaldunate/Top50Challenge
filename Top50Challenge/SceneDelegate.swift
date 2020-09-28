@@ -26,49 +26,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         entriesTableViewController.delegate = detailViewController
 
-        guard let url = URL(string: "https://www.reddit.com/r/popular/top.json?limit=10") else {
-            return
-        }
+        ApiClient.shared.getEntries(completion: { [weak detailViewController, weak entriesTableViewController] models in
+            if let detailViewController = detailViewController, let firstEntry = models.first {
+                detailViewController.setupWithEntry(author: firstEntry.author, picture: UIImage(named: "googleLogo"), title: firstEntry.title)
+            }
 
-        let request = URLRequest(url: url)
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data else {
+            guard let entriesTableViewController = entriesTableViewController else {
                 return
             }
-
-            do {
-                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                    if let jsonData = json["data"] as? [String: Any], let children = jsonData["children"] as? [Any] {
-                        var models = [EntryModel]()
-
-                        for entry in children {
-                            if let entryDictionary = entry as? [String: Any],
-                                let entryData = entryDictionary["data"] as? [String: Any],
-                                let author = entryData["author"] as? String,
-                                let title = entryData["title"] as? String,
-                                let timestamp = entryData["created"] as? Int,
-                                let comments = entryData["num_comments"] as? Int {
-                                let model = EntryModel(read: false, author: author, timestamp: timestamp, title: title, pictureURL: nil, comments: comments)
-                                models.append(model)
-                            }
-                        }
-
-                        models.sort { $0.timestamp > $1.timestamp }
-
-                        DispatchQueue.main.async {
-                            if let firstEntry = models.first {
-                                detailViewController.setupWithEntry(author: firstEntry.author, picture: UIImage(named: "googleLogo"), title: firstEntry.title)
-                            }
-
-                            entriesTableViewController.data = models
-                            entriesTableViewController.tableView.reloadData()
-                        }
-                    }
-                }
-            } catch let error {
-                print("Failed to load: \(error.localizedDescription)")
-            }
-        }.resume()
+            
+            entriesTableViewController.data = models
+            entriesTableViewController.tableView.reloadData()
+        }, failure: { error in
+            print(error.localizedDescription)
+        })
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

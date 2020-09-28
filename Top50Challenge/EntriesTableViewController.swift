@@ -16,15 +16,31 @@ protocol EntrySelectionDelegate: class {
 class EntriesTableViewController: UITableViewController {
     var data = [EntryModel]()
     weak var delegate: EntrySelectionDelegate?
-}
 
-extension EntriesTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.register(EntriesTableViewFooter.nib, forHeaderFooterViewReuseIdentifier: "entriesFooter")
+        refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: UIControl.Event.valueChanged)
     }
 
+    @objc func refresh(_ sender: UIRefreshControl) {
+        ApiClient.shared.getEntries(completion: { [weak self] models in
+            guard let self = self else {
+                return
+            }
+
+            self.refreshControl?.endRefreshing()
+            self.data = models
+            self.tableView.reloadData()
+        }, failure: { [weak self] error in
+            self?.refreshControl?.endRefreshing()
+            print(error.localizedDescription)
+        })
+    }
+}
+
+extension EntriesTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }

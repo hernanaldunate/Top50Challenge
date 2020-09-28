@@ -21,6 +21,7 @@
 		8B1100CF2521769F006E6F59 /* EntryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1100CE2521769F006E6F59 /* EntryDetailViewController.swift */; };
 		8B1100D32521BA60006E6F59 /* EntriesTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1100D22521BA5F006E6F59 /* EntriesTableViewFooter.swift */; };
 		8B1100D52521BA72006E6F59 /* EntriesTableViewFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B1100D42521BA72006E6F59 /* EntriesTableViewFooter.xib */; };
+		8B1100D72521C4BD006E6F59 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1100D62521C4BC006E6F59 /* ApiClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		8B1100CE2521769F006E6F59 /* EntryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailViewController.swift; sourceTree = "<group>"; };
 		8B1100D22521BA5F006E6F59 /* EntriesTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesTableViewFooter.swift; sourceTree = "<group>"; };
 		8B1100D42521BA72006E6F59 /* EntriesTableViewFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EntriesTableViewFooter.xib; sourceTree = "<group>"; };
+		8B1100D62521C4BC006E6F59 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				8B1100CA25214A10006E6F59 /* EntryTableViewCell.swift */,
 				8B1100CE2521769F006E6F59 /* EntryDetailViewController.swift */,
 				8B1100D22521BA5F006E6F59 /* EntriesTableViewFooter.swift */,
+				8B1100D62521C4BC006E6F59 /* ApiClient.swift */,
 				8B110079251C3477006E6F59 /* Main.storyboard */,
 				8B1100D42521BA72006E6F59 /* EntriesTableViewFooter.xib */,
 				8B11007F251C3479006E6F59 /* Assets.xcassets */,
@@ -280,6 +283,7 @@
 			files = (
 				8B1100CB25214A10006E6F59 /* EntryTableViewCell.swift in Sources */,
 				8B110078251C3477006E6F59 /* EntriesTableViewController.swift in Sources */,
+				8B1100D72521C4BD006E6F59 /* ApiClient.swift in Sources */,
 				8B110074251C3477006E6F59 /* AppDelegate.swift in Sources */,
 				8B1100D32521BA60006E6F59 /* EntriesTableViewFooter.swift in Sources */,
 				8B11007E251C3477006E6F59 /* Top50Challenge.xcdatamodeld in Sources */,
