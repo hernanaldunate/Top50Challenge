@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 protocol EntrySelectionDelegate: class {
-    func setupWithEntry(author: String, picture: UIImage?, title: String)
+    func setupWithEntry(author: String, pictureURL: String?, thumbnail: UIImage?, title: String)
 }
 
 class EntriesTableViewController: UITableViewController {
@@ -49,19 +49,24 @@ extension EntriesTableViewController {
         let model = data[indexPath.row]
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath) as! EntryTableViewCell
-        cell.setupWithEntry(read: model.read, author: model.author, timestamp: model.timestamp, title: model.title, picture: UIImage(named: "googleLogo"), comments: model.comments)
+        cell.setupWithEntry(read: model.read, author: model.author, timestamp: model.timestamp, title: model.title, thumbnail: model.thumbnail, comments: model.comments)
         cell.delegate = self
 
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let entry = data[indexPath.row]
-        delegate?.setupWithEntry(author: entry.author, picture: UIImage(named: "googleLogo"), title: entry.title)
-
-        if let detailViewController = delegate as? EntryDetailViewController {
-            splitViewController?.showDetailViewController(detailViewController, sender: nil)
+        guard let detailViewController = delegate as? EntryDetailViewController else {
+            return
         }
+
+        let entry = data[indexPath.row]
+        delegate?.setupWithEntry(author: entry.author, pictureURL: entry.pictureURL, thumbnail: entry.thumbnail, title: entry.title)
+        splitViewController?.showDetailViewController(detailViewController, sender: nil)
+
+//        if let detailViewController = delegate as? EntryDetailViewController {
+//            splitViewController?.showDetailViewController(detailViewController, sender: nil)
+//        }
     }
 
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -84,6 +89,13 @@ extension EntriesTableViewController: EntryCellDelegate {
         if let indexPath = tableView.indexPath(for: cell) {
             data.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .left)
+        }
+    }
+
+    func readEntry(cell: EntryTableViewCell) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            data[indexPath.row].markAsRead()
+            tableView.reloadRows(at:[indexPath], with: .none)
         }
     }
 }

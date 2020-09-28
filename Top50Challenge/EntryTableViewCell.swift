@@ -10,6 +10,7 @@ import UIKit
 
 protocol EntryCellDelegate: class {
     func deleteEntry(cell: EntryTableViewCell)
+    func readEntry(cell: EntryTableViewCell)
 }
 
 class EntryTableViewCell: UITableViewCell {
@@ -23,13 +24,19 @@ class EntryTableViewCell: UITableViewCell {
 
     weak var delegate: EntryCellDelegate?
 
-    func setupWithEntry(read: Bool, author: String, timestamp: Int, title: String, picture: UIImage?, comments: Int) {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        statusView.layer.cornerRadius = statusView.bounds.width * 0.5
+    }
+
+    func setupWithEntry(read: Bool, author: String, timestamp: Int, title: String, thumbnail: UIImage?, comments: Int) {
         statusView.isHidden = read
         authorLabel.text = author
         titleLabel.text = title
-        pictureImageView.image = picture
-        pictureImageView.isHidden = picture == nil
         commentsLabel.text = String(comments)
+        pictureImageView.isHidden = thumbnail == nil
+        pictureImageView.image = thumbnail
 
         let interval = TimeInterval(timestamp)
         let date = Date(timeIntervalSince1970: interval)
@@ -40,5 +47,13 @@ class EntryTableViewCell: UITableViewCell {
 
     @IBAction func deleteEntry(_ sender: UIButton) {
         delegate?.deleteEntry(cell: self)
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        if selected {
+            delegate?.readEntry(cell: self)
+        }
     }
 }

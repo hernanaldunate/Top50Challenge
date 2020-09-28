@@ -28,7 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         ApiClient.shared.getEntries(completion: { [weak detailViewController, weak entriesTableViewController] models in
             if let detailViewController = detailViewController, let firstEntry = models.first {
-                detailViewController.setupWithEntry(author: firstEntry.author, picture: UIImage(named: "googleLogo"), title: firstEntry.title)
+                detailViewController.setupWithEntry(author: firstEntry.author, pictureURL: firstEntry.pictureURL, thumbnail: firstEntry.thumbnail, title: firstEntry.title)
             }
 
             guard let entriesTableViewController = entriesTableViewController else {

@@ -7,12 +7,18 @@
 //
 
 import Foundation
+import UIKit
 
 struct EntryModel {
-    let read: Bool
+    var read: Bool
     let author: String
     let timestamp: Int
     let title: String
+    let thumbnail: UIImage?
     let pictureURL: String?
     let comments: Int
+
+    mutating func markAsRead() {
+        self.read = true
+    }
 }

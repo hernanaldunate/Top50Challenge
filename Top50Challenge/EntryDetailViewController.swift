@@ -15,6 +15,8 @@ class EntryDetailViewController: UIViewController {
     @IBOutlet weak var pictureImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
 
+    var dataTask: URLSessionDataTask?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,15 +26,33 @@ class EntryDetailViewController: UIViewController {
 }
 
 extension EntryDetailViewController: EntrySelectionDelegate {
-    func setupWithEntry(author: String, picture: UIImage?, title: String) {
+    func setupWithEntry(author: String, pictureURL: String?, thumbnail: UIImage?, title: String) {
         loadViewIfNeeded()
 
         scrollView.isHidden = false
         loadingLabel.isHidden = true
-        
         authorLabel.text = author
-        pictureImageView.image = picture
-        pictureImageView.isHidden = picture == nil
         titleLabel.text = title
+        pictureImageView.image = nil
+        pictureImageView.isHidden = true
+
+        dataTask?.suspend()
+        if let pictureURL = pictureURL {
+            dataTask = ApiClient.shared.getImage(from: pictureURL, completion: { [weak self] image in
+                guard let self = self else {
+                    return
+                }
+
+                self.pictureImageView.isHidden = false
+                self.pictureImageView.image = image
+            }, failure: { [weak self] error in
+                self?.pictureImageView.isHidden = thumbnail == nil
+                self?.pictureImageView.image = thumbnail
+                print(error)
+            })
+        } else {
+            pictureImageView.isHidden = thumbnail == nil
+            pictureImageView.image = thumbnail
+        }
     }
 }
