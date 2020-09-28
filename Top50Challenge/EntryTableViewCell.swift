@@ -34,15 +34,16 @@ class EntryTableViewCell: UITableViewCell {
         statusView.isHidden = read
         authorLabel.text = author
         titleLabel.text = title
-        commentsLabel.text = String(comments)
+        commentsLabel.text = "\(comments) comments"
         pictureImageView.isHidden = thumbnail == nil
         pictureImageView.image = thumbnail
 
         let interval = TimeInterval(timestamp)
         let date = Date(timeIntervalSince1970: interval)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
-        dateLabel.text = dateFormatter.string(from: date)
+        let diffComponents = Calendar.current.dateComponents([.hour], from: date, to: Date())
+        if let hours = diffComponents.hour {
+            dateLabel.text = "\(hours) hours ago"
+        }
     }
 
     @IBAction func deleteEntry(_ sender: UIButton) {
@@ -53,6 +54,7 @@ class EntryTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         if selected {
+            statusView.isHidden = true
             delegate?.readEntry(cell: self)
         }
     }

@@ -20,6 +20,7 @@ class EntriesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.tableFooterView = UIView() //To prevent showing separators between empty cells
         tableView.register(EntriesTableViewFooter.nib, forHeaderFooterViewReuseIdentifier: "entriesFooter")
         refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: UIControl.Event.valueChanged)
     }
@@ -63,10 +64,6 @@ extension EntriesTableViewController {
         let entry = data[indexPath.row]
         delegate?.setupWithEntry(author: entry.author, pictureURL: entry.pictureURL, thumbnail: entry.thumbnail, title: entry.title)
         splitViewController?.showDetailViewController(detailViewController, sender: nil)
-
-//        if let detailViewController = delegate as? EntryDetailViewController {
-//            splitViewController?.showDetailViewController(detailViewController, sender: nil)
-//        }
     }
 
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -95,7 +92,6 @@ extension EntriesTableViewController: EntryCellDelegate {
     func readEntry(cell: EntryTableViewCell) {
         if let indexPath = tableView.indexPath(for: cell) {
             data[indexPath.row].markAsRead()
-            tableView.reloadRows(at:[indexPath], with: .none)
         }
     }
 }
