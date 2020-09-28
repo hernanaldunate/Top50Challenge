@@ -17,10 +17,23 @@ enum ApiError: Error {
 class ApiClient: NSObject {
     static let shared = ApiClient()
 
+    let maxEntriesCount = 50
+    let entriesPerPage = 10
+    var lastPostID: String?
+
     override private init() {}
 
-    func getEntries(completion: @escaping ([EntryModel]) -> (), failure: @escaping (Error) -> ()) {
-        guard let url = URL(string: "https://www.reddit.com/r/popular/top.json?limit=10") else {
+    func getEntries(quantity: Int = 10, isRefreshing: Bool = false, completion: @escaping ([EntryModel]) -> (), failure: @escaping (Error) -> ()) {
+        if isRefreshing {
+            lastPostID = nil
+        }
+        
+        var urlString = "https://www.reddit.com/r/popular/top.json?limit=\(quantity)"
+        if let lastPostID = lastPostID {
+            urlString += "&after=t3_\(lastPostID)"
+        }
+
+        guard let url = URL(string: urlString) else {
             failure(ApiError.badUrl)
             return
         }
@@ -73,9 +86,14 @@ class ApiClient: NSObject {
                             }
                         }
 
-                        entriesGroup.notify(queue: .main) {
-                            models.sort { $0.timestamp > $1.timestamp }
+                        if let lastEntry = children.last,
+                            let entryDictionary = lastEntry as? [String: Any],
+                            let entryData = entryDictionary["data"] as? [String: Any],
+                            let postID = entryData["id"] as? String {
+                            self.lastPostID = postID
+                        }
 
+                        entriesGroup.notify(queue: .main) {
                             DispatchQueue.main.async {
                                 completion(models)
                             }

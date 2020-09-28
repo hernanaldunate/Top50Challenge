@@ -16,6 +16,7 @@ protocol EntrySelectionDelegate: class {
 class EntriesTableViewController: UITableViewController {
     var data = [EntryModel]()
     weak var delegate: EntrySelectionDelegate?
+    var isFetching = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,12 @@ class EntriesTableViewController: UITableViewController {
     }
 
     @objc func refresh(_ sender: UIRefreshControl) {
-        ApiClient.shared.getEntries(completion: { [weak self] models in
+        guard !isFetching else {
+            return
+        }
+
+        isFetching = true
+        ApiClient.shared.getEntries(isRefreshing: true, completion: { [weak self] models in
             guard let self = self else {
                 return
             }
@@ -34,8 +40,14 @@ class EntriesTableViewController: UITableViewController {
             self.refreshControl?.endRefreshing()
             self.data = models
             self.tableView.reloadData()
+            self.isFetching = false
         }, failure: { [weak self] error in
-            self?.refreshControl?.endRefreshing()
+            guard let self = self else {
+                return
+            }
+
+            self.refreshControl?.endRefreshing()
+            self.isFetching = false
             print(error.localizedDescription)
         })
     }
@@ -78,6 +90,44 @@ extension EntriesTableViewController {
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return data.isEmpty ? 0 : 50
+    }
+}
+
+extension EntriesTableViewController {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard !isFetching else {
+            return
+        }
+
+        let bottomEdge = scrollView.contentOffset.y + scrollView.bounds.size.height
+        if bottomEdge >= scrollView.contentSize.height {
+            let quantity = min(ApiClient.shared.maxEntriesCount - self.data.count, ApiClient.shared.entriesPerPage)
+            guard quantity > 0 else {
+                return
+            }
+
+            isFetching = true
+            ApiClient.shared.getEntries(quantity: quantity, completion: { [weak self] models in
+                guard let self = self else {
+                    return
+                }
+
+                self.data += models
+
+                var indexPaths = [IndexPath]()
+                for (index, _) in self.data.enumerated() {
+                    if index >= self.data.count - models.count {
+                        indexPaths.append(IndexPath(row: index, section: 0))
+                    }
+                }
+
+                self.tableView.insertRows(at: indexPaths, with: .none)
+                self.isFetching = false
+            }, failure: { [weak self] error in
+                self?.isFetching = false
+                print(error.localizedDescription)
+            })
+        }
     }
 }
 
