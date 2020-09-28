@@ -19,7 +19,7 @@
 		8B1100C725214767006E6F59 /* EntryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1100C625214767006E6F59 /* EntryModel.swift */; };
 		8B1100CB25214A10006E6F59 /* EntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1100CA25214A10006E6F59 /* EntryTableViewCell.swift */; };
 		8B1100CD25214F74006E6F59 /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1100CC25214F74006E6F59 /* TestTableViewController.swift */; };
-		8B1100CF2521769F006E6F59 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1100CE2521769F006E6F59 /* DetailViewController.swift */; };
+		8B1100CF2521769F006E6F59 /* EntryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1100CE2521769F006E6F59 /* EntryDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +58,7 @@
 		8B1100C625214767006E6F59 /* EntryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryModel.swift; sourceTree = "<group>"; };
 		8B1100CA25214A10006E6F59 /* EntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTableViewCell.swift; sourceTree = "<group>"; };
 		8B1100CC25214F74006E6F59 /* TestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
-		8B1100CE2521769F006E6F59 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		8B1100CE2521769F006E6F59 /* EntryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +114,7 @@
 				8B1100C625214767006E6F59 /* EntryModel.swift */,
 				8B110077251C3477006E6F59 /* EntriesTableViewController.swift */,
 				8B1100CA25214A10006E6F59 /* EntryTableViewCell.swift */,
-				8B1100CE2521769F006E6F59 /* DetailViewController.swift */,
+				8B1100CE2521769F006E6F59 /* EntryDetailViewController.swift */,
 				8B1100CC25214F74006E6F59 /* TestTableViewController.swift */,
 				8B110079251C3477006E6F59 /* Main.storyboard */,
 				8B11007F251C3479006E6F59 /* Assets.xcassets */,
@@ -281,7 +281,7 @@
 				8B110076251C3477006E6F59 /* SceneDelegate.swift in Sources */,
 				8B1100CD25214F74006E6F59 /* TestTableViewController.swift in Sources */,
 				8B1100C725214767006E6F59 /* EntryModel.swift in Sources */,
-				8B1100CF2521769F006E6F59 /* DetailViewController.swift in Sources */,
+				8B1100CF2521769F006E6F59 /* EntryDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

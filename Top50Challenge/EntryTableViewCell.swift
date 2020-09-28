@@ -23,7 +23,7 @@ class EntryTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    func setupWith(read: Bool, author: String, date: Date, title: String, picture: UIImage?, comments: Int) {
+    func setupWithEntry(read: Bool, author: String, date: Date, title: String, picture: UIImage?, comments: Int) {
         statusView.isHidden = read
         authorLabel.text = author
         titleLabel.text = title
