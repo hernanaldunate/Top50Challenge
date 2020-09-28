@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         entriesTableViewController.delegate = detailViewController
 
-        guard let url = URL(string: "https://www.reddit.com/r/popular/top.json?limit=5") else {
+        guard let url = URL(string: "https://www.reddit.com/r/popular/top.json?limit=10") else {
             return
         }
 

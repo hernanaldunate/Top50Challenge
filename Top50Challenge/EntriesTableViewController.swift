@@ -19,6 +19,12 @@ class EntriesTableViewController: UITableViewController {
 }
 
 extension EntriesTableViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        tableView.register(EntriesTableViewFooter.nib, forHeaderFooterViewReuseIdentifier: "entriesFooter")
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
@@ -28,6 +34,7 @@ extension EntriesTableViewController {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath) as! EntryTableViewCell
         cell.setupWithEntry(read: model.read, author: model.author, timestamp: model.timestamp, title: model.title, picture: UIImage(named: "googleLogo"), comments: model.comments)
+        cell.delegate = self
 
         return cell
     }
@@ -39,5 +46,36 @@ extension EntriesTableViewController {
         if let detailViewController = delegate as? EntryDetailViewController {
             splitViewController?.showDetailViewController(detailViewController, sender: nil)
         }
+    }
+
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard let footerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "entriesFooter") as? EntriesTableViewFooter else {
+            return nil
+        }
+
+        footerView.delegate = self
+
+        return footerView
+    }
+
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return data.isEmpty ? 0 : 50
+    }
+}
+
+extension EntriesTableViewController: EntryCellDelegate {
+    func deleteEntry(cell: EntryTableViewCell) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            data.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .left)
+        }
+    }
+}
+
+extension EntriesTableViewController: EntriesFooterDelegate {
+    func deleteAllEntries() {
+        let indexPaths = data.enumerated().map { IndexPath(row: $0.offset, section: 0) }
+        data.removeAll()
+        tableView.deleteRows(at: indexPaths, with: .automatic)
     }
 }

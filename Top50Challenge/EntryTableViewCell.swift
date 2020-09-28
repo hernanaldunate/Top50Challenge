@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol EntryCellDelegate: class {
+    func deleteEntry(cell: EntryTableViewCell)
+}
+
 class EntryTableViewCell: UITableViewCell {
     @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var authorLabel: UILabel!
@@ -16,6 +20,8 @@ class EntryTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var commentsLabel: UILabel!
+
+    weak var delegate: EntryCellDelegate?
 
     func setupWithEntry(read: Bool, author: String, timestamp: Int, title: String, picture: UIImage?, comments: Int) {
         statusView.isHidden = read
@@ -30,5 +36,9 @@ class EntryTableViewCell: UITableViewCell {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
         dateLabel.text = dateFormatter.string(from: date)
+    }
+
+    @IBAction func deleteEntry(_ sender: UIButton) {
+        delegate?.deleteEntry(cell: self)
     }
 }
