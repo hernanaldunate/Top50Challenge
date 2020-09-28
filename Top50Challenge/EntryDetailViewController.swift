@@ -65,6 +65,29 @@ class EntryDetailViewController: UIViewController {
 
         return CGRect(x: x, y: 0, width: newSize.width, height: newSize.height)
     }
+
+    @IBAction func saveImageToPhotosAlbum(_ sender: Any) {
+        if let image = pictureImageView.image {
+            let alertController = UIAlertController(title: "Save to album", message: "Do you want to save the picture to your photos album?", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Accept", style: .default) { action in
+                UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
+            })
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            present(alertController, animated: true)
+        }
+    }
+
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            let alertController = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alertController, animated: true)
+        } else {
+            let alertController = UIAlertController(title: "Saved!", message: "The picture has been saved to your photos album.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alertController, animated: true)
+        }
+    }
 }
 
 extension EntryDetailViewController: EntrySelectionDelegate {

@@ -165,6 +165,12 @@
                                                     <constraint firstAttribute="width" priority="750" constant="200" id="m3A-6Y-0aS"/>
                                                 </constraints>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vfg-d9-YI5" userLabel="Save Button">
+                                                <rect key="frame" x="95" y="30.5" width="200" height="200"/>
+                                                <connections>
+                                                    <action selector="saveImageToPhotosAlbum:" destination="dmn-pM-YHV" eventType="touchUpInside" id="UNn-lT-aoJ"/>
+                                                </connections>
+                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wa6-uD-50U" userLabel="Title">
                                                 <rect key="frame" x="0.0" y="240.5" width="390" height="24"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -179,9 +185,13 @@
                                             <constraint firstItem="wbp-Td-V4c" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gfE-Iz-LvV" secondAttribute="leading" id="GhF-Aw-Z76"/>
                                             <constraint firstItem="Wa6-uD-50U" firstAttribute="leading" secondItem="gfE-Iz-LvV" secondAttribute="leading" id="GjM-H2-Jwy"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GLH-Tp-RDw" secondAttribute="trailing" id="OKn-r4-M1i"/>
+                                            <constraint firstItem="Vfg-d9-YI5" firstAttribute="top" secondItem="wbp-Td-V4c" secondAttribute="top" id="Ovj-dI-Lll"/>
                                             <constraint firstItem="Wa6-uD-50U" firstAttribute="top" secondItem="wbp-Td-V4c" secondAttribute="bottom" constant="10" id="PfZ-Fn-IN6"/>
                                             <constraint firstItem="wbp-Td-V4c" firstAttribute="top" secondItem="GLH-Tp-RDw" secondAttribute="bottom" constant="10" id="V5U-Qe-IrW"/>
+                                            <constraint firstItem="Vfg-d9-YI5" firstAttribute="leading" secondItem="wbp-Td-V4c" secondAttribute="leading" id="dnF-IY-Ogx"/>
+                                            <constraint firstItem="Vfg-d9-YI5" firstAttribute="trailing" secondItem="wbp-Td-V4c" secondAttribute="trailing" id="dvN-H5-H5U"/>
                                             <constraint firstItem="GLH-Tp-RDw" firstAttribute="leading" secondItem="gfE-Iz-LvV" secondAttribute="leading" id="kSc-s1-fO2"/>
+                                            <constraint firstItem="Vfg-d9-YI5" firstAttribute="bottom" secondItem="wbp-Td-V4c" secondAttribute="bottom" id="nZF-wI-2y1"/>
                                             <constraint firstItem="wbp-Td-V4c" firstAttribute="centerX" secondItem="gfE-Iz-LvV" secondAttribute="centerX" id="nlg-e5-Swf"/>
                                             <constraint firstAttribute="trailing" secondItem="Wa6-uD-50U" secondAttribute="trailing" id="rX2-mM-azW"/>
                                             <constraint firstAttribute="bottom" secondItem="Wa6-uD-50U" secondAttribute="bottom" id="ymB-hX-MYr"/>
