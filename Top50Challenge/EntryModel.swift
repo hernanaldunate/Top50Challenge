@@ -11,7 +11,7 @@ import Foundation
 struct EntryModel {
     let read: Bool
     let author: String
-    let date: Date
+    let timestamp: Int
     let title: String
     let pictureURL: String?
     let comments: Int

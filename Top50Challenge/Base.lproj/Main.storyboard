@@ -123,6 +123,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Entry" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvy-03-Vx2" userLabel="Loading">
+                                <rect key="frame" x="154" y="437.5" width="106" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bcY-ZO-9bU">
                                 <rect key="frame" x="12" y="100" width="390" height="750"/>
                                 <subviews>
@@ -178,6 +184,8 @@
                             <constraint firstItem="bcY-ZO-9bU" firstAttribute="top" secondItem="tTJ-S4-A96" secondAttribute="top" constant="12" id="8d5-Gd-tiy"/>
                             <constraint firstItem="tTJ-S4-A96" firstAttribute="bottom" secondItem="bcY-ZO-9bU" secondAttribute="bottom" constant="12" id="DGz-QF-gN3"/>
                             <constraint firstItem="bcY-ZO-9bU" firstAttribute="leading" secondItem="tTJ-S4-A96" secondAttribute="leading" constant="12" id="Dcr-TG-1hF"/>
+                            <constraint firstItem="gvy-03-Vx2" firstAttribute="centerY" secondItem="v3a-Pi-06L" secondAttribute="centerY" id="Zaa-k7-avX"/>
+                            <constraint firstItem="gvy-03-Vx2" firstAttribute="centerX" secondItem="v3a-Pi-06L" secondAttribute="centerX" id="cSi-v1-Tdn"/>
                             <constraint firstItem="tTJ-S4-A96" firstAttribute="trailing" secondItem="bcY-ZO-9bU" secondAttribute="trailing" constant="12" id="tlj-8a-Dy8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tTJ-S4-A96"/>
@@ -185,28 +193,15 @@
                     <navigationItem key="navigationItem" id="KZd-8N-Mfj"/>
                     <connections>
                         <outlet property="authorLabel" destination="GLH-Tp-RDw" id="1RG-Mg-qJD"/>
+                        <outlet property="loadingLabel" destination="gvy-03-Vx2" id="PhO-Df-dMY"/>
                         <outlet property="pictureImageView" destination="wbp-Td-V4c" id="b3l-eK-vzw"/>
+                        <outlet property="scrollView" destination="bcY-ZO-9bU" id="rLw-yd-8ne"/>
                         <outlet property="titleLabel" destination="Wa6-uD-50U" id="uHB-mP-xUM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lWN-FC-dsB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-239" y="747"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="hKX-DT-X4z">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="avY-7y-uYX" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZQv-qg-SvT">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GIc-V2-zg2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="65" y="-899"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YJw-C1-Hg6">
